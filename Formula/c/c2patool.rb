@@ -22,10 +22,10 @@ class C2patool < Formula
 
   depends_on "pkgconf" => :build
   depends_on "rust" => :build
-
-  depends_on "openssl@3"
+  depends_on "openssl@4"
 
   def install
+    ENV["OPENSSL_DIR"] = Formula["openssl@4"].opt_prefix
     system "cargo", "install", *std_cargo_args(path: "cli")
   end
 
